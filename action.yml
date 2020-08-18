@@ -1,5 +1,5 @@
-name: 'Draft'
-description: 'No description.'
+name: 'Issue Pull Request'
+description: 'Creates pull request based on issue.'
 inputs:
   token:
     description: 'GitHub token used by action.'
