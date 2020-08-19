@@ -1,11 +1,11 @@
 import * as utility from './utility'
 
-export async function createIssuePullRequest(owner: string, repo: string, number: string, base: string, head: string, body: boolean, link: boolean, config: any): Promise<string> {
+export async function createIssuePullRequest(owner: string, repo: string, number: string, base: string, head: string, body: boolean, link: boolean, config: any, context: any): Promise<string> {
   const issue = await utility.getIssue(owner, repo, number)
   const pullRequest = await createPullRequest(owner, repo, issue.title, body ? issue.body : '', base, head)
 
   if (link) {
-    const body = getComment(base, issue.number, config)
+    const body = getComment(base, issue.number, config, context)
 
     await createIssueComment(owner, repo, pullRequest.number, body)
   }
@@ -25,8 +25,9 @@ async function createPullRequest(owner: string, repo: string, title: string, bod
   return response.data
 }
 
-function getComment(base: string, number: string, config: any): string {
+function getComment(base: string, number: string, config: any, context: any): string {
   const values = {
+    context: context,
     base: base,
     number: number
   }
