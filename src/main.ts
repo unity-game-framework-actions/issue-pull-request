@@ -13,7 +13,8 @@ async function run(): Promise<void> {
     const link = core.getInput('link', {required: true}) === 'true'
     const repository = utility.getRepository()
     const config = await utility.readConfigAny()
-    const result = await action.createIssuePullRequest(repository.owner, repository.repo, issue, base, head, body, link, config)
+    const context = await utility.getContextAny()
+    const result = await action.createIssuePullRequest(repository.owner, repository.repo, issue, base, head, body, link, config, context)
 
     await utility.setOutput(result)
   } catch (error) {

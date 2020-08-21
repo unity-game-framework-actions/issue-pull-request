@@ -32,6 +32,10 @@ inputs:
     default: |
       comment: 'Linked Issue: #{number}.'
     required: true
+  context:
+    description: 'Context can be specific value or file path, and can be accessed in text formatting context. (Possible representation types: "Json" or "Yaml".)'
+    default: '{}'
+    required: true
   output:
     description: 'Path to output result as file.'
     required: false
