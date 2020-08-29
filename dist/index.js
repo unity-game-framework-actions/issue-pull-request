@@ -3762,6 +3762,7 @@ exports.createIssuePullRequest = void 0;
 const utility = __importStar(__webpack_require__(880));
 function createIssuePullRequest(owner, repo, number, base, head, body, link, config, context) {
     return __awaiter(this, void 0, void 0, function* () {
+        number = getIssueNumber(number, head, config);
         const issue = yield utility.getIssue(owner, repo, number);
         const pullRequest = yield createPullRequest(owner, repo, issue.title, body ? issue.body : '', base, head);
         if (link) {
@@ -3800,6 +3801,16 @@ function createIssueComment(owner, repo, number, body) {
             body: body
         });
     });
+}
+function getIssueNumber(number, head, config) {
+    if (number === '') {
+        const matches = head.match(new RegExp(config.issueBranchRegex, 'g'));
+        if (matches != null && matches.length > 0) {
+            return matches[0];
+        }
+        throw `No matches found in specified head branch: '${head}'.`;
+    }
+    return number;
 }
 
 
@@ -5055,7 +5066,7 @@ run();
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const issue = core.getInput('issue', { required: true });
+            const issue = core.getInput('issue');
             const base = core.getInput('base', { required: true });
             const head = core.getInput('head', { required: true });
             const body = core.getInput('body', { required: true }) === 'true';
