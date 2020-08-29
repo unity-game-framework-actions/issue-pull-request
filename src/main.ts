@@ -6,7 +6,7 @@ run()
 
 async function run(): Promise<void> {
   try {
-    const issue = core.getInput('issue', {required: true})
+    const issue = core.getInput('issue')
     const base = core.getInput('base', {required: true})
     const head = core.getInput('head', {required: true})
     const body = core.getInput('body', {required: true}) === 'true'

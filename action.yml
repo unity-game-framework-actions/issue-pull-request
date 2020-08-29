@@ -2,8 +2,8 @@ name: 'Issue Pull Request'
 description: 'Creates pull request based on issue.'
 inputs:
   issue:
-    description: 'Number of issue which title used to create pull request.'
-    required: true
+    description: 'Number of issue which title used to create pull request or regex from config will be used to determine issue number based on branch name.'
+    required: false
   base:
     description: 'Base branch of new pull request.'
     default: master
@@ -31,6 +31,7 @@ inputs:
     description: 'Path to file or config as value with generate settings. (Possible representation types: "Json" or "Yaml".)'
     default: |
       comment: 'Linked Issue: #{number}.'
+      issueBranchRegex: '(?<=issue-)(\d*?)(?=-)'
     required: true
   context:
     description: 'Context can be specific value or file path, and can be accessed in text formatting context. (Possible representation types: "Json" or "Yaml".)'
