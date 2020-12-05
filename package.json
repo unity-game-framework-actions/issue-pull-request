@@ -1,6 +1,6 @@
 {
   "name": "issue-pull-request",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Issue Pull Request",
   "description": "Creates pull request based on issue.",
   "main": "lib/main.js",
@@ -22,14 +22,14 @@
   },
   "homepage": "https://github.com/unity-game-framework-actions/issue-pull-request#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
     "@types/js-yaml": "^3.12.5",
     "@types/object-path": "^0.11.0",
     "eol": "^0.9.1",
     "indent-string": "^4.0.0",
     "js-yaml": "^3.14.0",
-    "object-path": "^0.11.4"
+    "object-path": "^0.11.5"
   },
   "devDependencies": {
     "prettier": "^2.0.5",
