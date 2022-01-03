@@ -10,7 +10,7 @@ async function run(): Promise<void> {
     const base = core.getInput('base', {required: true})
     const head = core.getInput('head', {required: true})
     const body = core.getInput('body', {required: true}) === 'true'
-    const link = core.getInput('link', {required: true}) === 'true'
+    const link = core.getInput('link', {required: true})
     const repository = utility.getRepository()
     const config = await utility.readConfigAny()
     const context = await utility.getContextAny()
