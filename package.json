@@ -1,6 +1,6 @@
 {
   "name": "issue-pull-request",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "displayName": "Issue Pull Request",
   "description": "Creates pull request based on issue.",
   "main": "lib/main.js",
